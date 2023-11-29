@@ -1,3 +1,5 @@
+using System.Numerics;
+
 namespace Ardalis.SmartEnum.Utf8Json
 {
     using global::Utf8Json;
@@ -6,7 +8,7 @@ namespace Ardalis.SmartEnum.Utf8Json
 
     public class SmartFlagEnumValueFormatter<TEnum, TValue> : IJsonFormatter<TEnum>
         where TEnum : SmartFlagEnum<TEnum, TValue>
-        where TValue : struct, IEquatable<TValue>, IComparable<TValue>
+        where TValue : struct, INumber<TValue>
     {
         public void Serialize(ref JsonWriter writer, TEnum value, IJsonFormatterResolver formatterResolver)
         {

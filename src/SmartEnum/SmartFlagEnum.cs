@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -35,18 +36,20 @@ namespace Ardalis.SmartEnum
         IEquatable<SmartFlagEnum<TEnum, TValue>>,
         IComparable<SmartFlagEnum<TEnum, TValue>>
         where TEnum : SmartFlagEnum<TEnum, TValue>
-        where TValue : IEquatable<TValue>, IComparable<TValue>
+        where TValue : INumber<TValue>
     {
         static readonly Lazy<Dictionary<string, TEnum>> _fromName =
             new Lazy<Dictionary<string, TEnum>>(() => GetAllOptions().ToDictionary(item => item.Name));
 
         static readonly Lazy<Dictionary<string, TEnum>> _fromNameIgnoreCase =
-            new Lazy<Dictionary<string, TEnum>>(() => GetAllOptions().ToDictionary(item => item.Name, StringComparer.OrdinalIgnoreCase));
+            new Lazy<Dictionary<string, TEnum>>(() =>
+                GetAllOptions().ToDictionary(item => item.Name, StringComparer.OrdinalIgnoreCase));
 
         private static IEnumerable<TEnum> GetAllOptions()
         {
             Type baseType = typeof(TEnum);
-            IEnumerable<Type> enumTypes = Assembly.GetAssembly(baseType).GetTypes().Where(t => baseType.IsAssignableFrom(t));
+            IEnumerable<Type> enumTypes =
+                Assembly.GetAssembly(baseType).GetTypes().Where(t => baseType.IsAssignableFrom(t));
 
             List<TEnum> options = new List<TEnum>();
             foreach (Type enumType in enumTypes)

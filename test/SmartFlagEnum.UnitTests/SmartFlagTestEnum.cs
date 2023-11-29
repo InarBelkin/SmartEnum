@@ -106,17 +106,6 @@ namespace Ardalis.SmartEnum.UnitTests
         }
     }
 
-    public class SmartFlagTestStringEnum : SmartFlagEnum<SmartFlagTestStringEnum, string>
-    {
-        public static readonly SmartFlagTestStringEnum One = new SmartFlagTestStringEnum(nameof(One), nameof(One));
-        public static readonly SmartFlagTestStringEnum Two = new SmartFlagTestStringEnum(nameof(Two), nameof(Two));
-        public static readonly SmartFlagTestStringEnum Three = new SmartFlagTestStringEnum(nameof(Three), nameof(Three));
-
-        public SmartFlagTestStringEnum(string name, string value) : base(name, value)
-        {
-        }
-    }
-
     public class SmartFlagAlternativeValueNotation : SmartFlagEnum<SmartFlagAlternativeValueNotation>
     {
         public static readonly SmartFlagAlternativeValueNotation None = new SmartFlagAlternativeValueNotation(nameof(None), 0);

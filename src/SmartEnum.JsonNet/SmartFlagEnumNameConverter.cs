@@ -1,12 +1,13 @@
 using System;
 using System.Linq;
+using System.Numerics;
 using Newtonsoft.Json;
 
 namespace Ardalis.SmartEnum.JsonNet
 {
     public class SmartFlagEnumNameConverter<TEnum, TValue> : JsonConverter<TEnum> 
     where TEnum : SmartFlagEnum<TEnum, TValue>
-    where TValue : struct, IComparable<TValue>, IEquatable<TValue>
+    where TValue : struct, INumber<TValue>
     {
         public override bool CanRead => true;
 

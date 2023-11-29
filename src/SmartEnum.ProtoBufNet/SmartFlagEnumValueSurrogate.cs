@@ -1,4 +1,6 @@
-﻿namespace Ardalis.SmartEnum.ProtoBufNet
+﻿using System.Numerics;
+
+namespace Ardalis.SmartEnum.ProtoBufNet
 {
     using System;
     using ProtoBuf;
@@ -6,7 +8,7 @@
     [ProtoContract]
     public class SmartFlagEnumValueSurrogate<TEnum, TValue>
         where TEnum : SmartFlagEnum<TEnum, TValue>
-        where TValue : struct, IEquatable<TValue>, IComparable<TValue>
+        where TValue : struct, INumber<TValue>
     {
         [ProtoMember(1, IsRequired = true)]
         TValue Value { get; set; }

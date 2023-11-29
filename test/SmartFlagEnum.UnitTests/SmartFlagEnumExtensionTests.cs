@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Text;
 using Ardalis.SmartEnum;
 using Ardalis.SmartEnum.UnitTests;
@@ -17,7 +18,7 @@ namespace Ardalis.SmartFlagEnum.UnitTests
 
         public class GenericEnum<T> :
             SmartFlagEnum<GenericEnum<T>, T>
-            where T : struct, IEquatable<T>, IComparable<T>
+            where T : struct, INumber<T>
         {
             protected GenericEnum(string name, T value) : base(name, value) { }
         }

@@ -1,3 +1,5 @@
+using System.Numerics;
+
 namespace Ardalis.SmartEnum.SystemTextJson
 {
     using System;
@@ -7,7 +9,7 @@ namespace Ardalis.SmartEnum.SystemTextJson
 
     public class SmartFlagEnumNameConverter<TEnum, TValue> : JsonConverter<TEnum> 
     where TEnum : SmartFlagEnum<TEnum, TValue>
-    where TValue : struct, IComparable<TValue>, IEquatable<TValue>
+    where TValue : struct, INumber<TValue>
     {
         public override bool HandleNull => true;
 

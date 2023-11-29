@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Numerics;
 using System.Reflection;
 using System.Text;
 
@@ -46,7 +47,7 @@ namespace Ardalis.SmartEnum
 
         public static bool TryGetFlagEnumValuesByName<TEnum, TValue>(this Dictionary<string, TEnum> dictionary, string names, out IEnumerable<TEnum> outputEnums)
             where TEnum : SmartFlagEnum<TEnum, TValue>
-            where TValue : IEquatable<TValue>, IComparable<TValue>
+            where TValue : INumber<TValue>
         {
             var outputList = new List<TEnum>(dictionary.Count);
 

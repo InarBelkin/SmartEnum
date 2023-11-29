@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
+using System.Numerics;
 using System.Reflection;
 using System.Text;
 using Ardalis.SmartEnum.Exceptions;
@@ -11,7 +12,7 @@ namespace Ardalis.SmartEnum
 {
     public abstract class SmartFlagEngine<TEnum, TValue>
         where TEnum : SmartFlagEnum<TEnum, TValue>
-        where TValue : IEquatable<TValue>, IComparable<TValue>
+        where TValue : INumber<TValue>
     {
         protected SmartFlagEngine() { }
 

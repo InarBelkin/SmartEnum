@@ -1,3 +1,5 @@
+using System.Numerics;
+
 namespace Ardalis.SmartEnum.MessagePack
 {
     using System;
@@ -11,7 +13,7 @@ namespace Ardalis.SmartEnum.MessagePack
     /// <typeparam name="TValue"></typeparam>
     public class SmartFlagEnumValueFormatter<TEnum, TValue> : IMessagePackFormatter<TEnum>
         where TEnum : SmartFlagEnum<TEnum, TValue>
-        where TValue : struct, IEquatable<TValue>, IComparable<TValue>
+        where TValue : struct, INumber<TValue>
     {
         /// <summary>
         /// 

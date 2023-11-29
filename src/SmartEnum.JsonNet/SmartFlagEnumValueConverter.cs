@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using Newtonsoft.Json;
 
@@ -8,7 +9,7 @@ namespace Ardalis.SmartEnum.JsonNet
 {
     public class SmartFlagEnumValueConverter<TEnum, TValue> : JsonConverter<TEnum>
     where TEnum : SmartFlagEnum<TEnum, TValue>
-    where TValue: struct, IEquatable<TValue>, IComparable<TValue>
+    where TValue: struct, INumber<TValue>
     {
         public override bool CanRead => true;
 

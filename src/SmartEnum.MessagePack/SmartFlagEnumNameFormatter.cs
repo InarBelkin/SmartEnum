@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Numerics;
 
 namespace Ardalis.SmartEnum.MessagePack
 {
@@ -9,7 +10,7 @@ namespace Ardalis.SmartEnum.MessagePack
 
     public sealed class SmartFlagEnumNameFormatter<TEnum, TValue> : IMessagePackFormatter<TEnum>
         where TEnum : SmartFlagEnum<TEnum, TValue>
-        where TValue : struct, IEquatable<TValue>, IComparable<TValue>
+        where TValue : struct, INumber<TValue>
     {
         public void Serialize(ref MessagePackWriter writer, TEnum value, MessagePackSerializerOptions options)
         {

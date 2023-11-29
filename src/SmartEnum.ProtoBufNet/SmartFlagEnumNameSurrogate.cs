@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Numerics;
 using ProtoBuf;
 
 namespace Ardalis.SmartEnum.ProtoBufNet
@@ -7,7 +8,7 @@ namespace Ardalis.SmartEnum.ProtoBufNet
     [ProtoContract]
     public class SmartFlagEnumNameSurrogate<TEnum, TValue>
     where TEnum : SmartFlagEnum<TEnum, TValue>
-    where TValue : struct, IEquatable<TValue>, IComparable<TValue>
+    where TValue : struct, INumber<TValue>
     {
         [ProtoMember(1, IsRequired =  true)] 
         public string Name { get; set; }
